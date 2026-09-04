@@ -33,7 +33,7 @@
        PROCEDURE DIVISION.
        INICIO.
            DISPLAY "=============================".
-           DISPLAY "Contagem de Funcionários".
+           DISPLAY "| Contagem de Funcionários  |".
            DISPLAY "=============================".
       
       * Abrindo o Arquivo que foi declarado na File Section FD**
@@ -42,3 +42,7 @@
       * Processamento dos Registros do arquivo
            PERFORM UNIT LEITURA-FINALIZADA = "S"
                READ FUNCIONARIOS INTO DETALHEFUNCIONARIO
+                AT END
+                   MOVE "S" TO LEITURA-FINALIZADA
+                NOT AT END
+           END-PERFORM.
