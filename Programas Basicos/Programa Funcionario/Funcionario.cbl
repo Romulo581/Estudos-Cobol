@@ -45,4 +45,20 @@
                 AT END
                    MOVE "S" TO LEITURA-FINALIZADA
                 NOT AT END
+                   INSPECT PRIMEIRO-NOME REPLACING ALL " " BY LOW-VALUES
+                   INSPECT ULTIMO-NOME REPLACING ALL " " BY LOW-VALUES
+                   DISPLAY MATRICULA-FUNCIONARIO " " GENERO " "
+                           PRIMEIRO-NOME " " ULTIMO-NOME " "
+                           DATA-CONTRATACAO
+                   IF GENERO = "M"
+                       ADD 1 TO TOTAL-HOMENS
+                   ELSE
+                       IF GENERO = "F"
+                          ADD 1 TO TOTAL-MULHERES
+                       END-IF
+                       ADD 0 TOTAL-HOMENS
+                   END-IF
+               END-READ 
            END-PERFORM.
+      *Fechando o Arquivo
+           CLOSE FUNCIONARIOS.
