@@ -62,3 +62,13 @@
            END-PERFORM.
       *Fechando o Arquivo
            CLOSE FUNCIONARIOS.
+
+      * Exibir o resumo
+           DISPLAY "===================================".
+           DISPLAY "Resumo: ".
+           DISPLAY "Total de Homens:.. " TOTAL-HOMENS.
+           DISPLAY "Total de Mulheres: " TOTAL-MULHERES.
+           DISPLAY "===================================".
+
+           STOP RUN.
+           
