@@ -39,49 +39,63 @@
        
        PROCEDURE DIVISION.
        INICIO.
+           PERFORM HEADER.
+           OPEN INPUT FUNCIONARIOS.
+           PERFORM PROCESSAR-REGISTROS.
+           CLOSE FUNCIONARIOS.
+           PERFORM EXIBIR-RESUMO.
+           STOP RUN.
+
+       PROCESSAR-REGISTROS.
+           PERFORM UNTIL LEITURA-FINALIZADA = "S"
+               PERFORM LER-REGISTRO
+               IF LEITURA-FINALIZADA NOT = "S"
+                   PERFORM EXIBIR-FUNCIONARIO
+                   PERFORM CONTAR-GENERO
+               END-IF
+           END-PERFORM.
+       HEADER.
            DISPLAY "=============================".
            DISPLAY "| Contagem de Funcionários  |".
            DISPLAY "=============================".
+           
       
-      * Abrindo o Arquivo que foi declarado na File Section FD**
-           OPEN INPUT FUNCIONARIOS.
-               
-
-      * Processamento dos Registros do arquivo         
-           PERFORM UNTIL LEITURA-FINALIZADA = "S"
-               READ FUNCIONARIOS INTO DETALHEFUNCIONARIO
-                AT END
+       LER-REGISTRO.
+           READ FUNCIONARIOS INTO DETALHEFUNCIONARIO
+               AT END
                    MOVE "S" TO LEITURA-FINALIZADA
-                NOT AT END
-
+               NOT AT END
                    MOVE ANO-CONTRATACAO TO WS-ANO-CONTRATACAO
                    MOVE MES-CONTRATACAO TO WS-MES-CONTRATACAO
                    MOVE DIA-CONTRATACAO TO WS-DIA-CONTRATACAO
+                   CONTINUE
+           END-READ.
 
-                   INSPECT PRIMEIRO-NOME REPLACING ALL " " BY LOW-VALUES
-                   INSPECT ULTIMO-NOME REPLACING ALL " " BY LOW-VALUES
-                   DISPLAY MATRICULA-FUNCIONARIO " " GENERO " "
-                           PRIMEIRO-NOME " " ULTIMO-NOME " "
-                           WS-DATA-FORMATADA
-                   IF GENERO = "M"
-                       ADD 1 TO TOTAL-HOMENS
-                   ELSE
-                       IF GENERO = "F"
-                          ADD 1 TO TOTAL-MULHERES
-                       END-IF
-                       ADD 0 TOTAL-HOMENS
-                   END-IF
-               END-READ 
-           END-PERFORM.
-      *Fechando o Arquivo
-           CLOSE FUNCIONARIOS.
+       EXIBIR-FUNCIONARIO.
+           INSPECT PRIMEIRO-NOME REPLACING ALL " " BY LOW-VALUES
+           INSPECT ULTIMO-NOME   REPLACING ALL " " BY LOW-VALUES
+           DISPLAY MATRICULA-FUNCIONARIO " " GENERO " "
+               PRIMEIRO-NOME " " ULTIMO-NOME " "
+               WS-DATA-FORMATADA.
+           DISPLAY "=================================================".
 
-
-      * Exibir o resumo
+       CONTAR-GENERO.
+           IF GENERO = "M"
+               ADD 1 TO TOTAL-HOMENS
+           ELSE
+               IF GENERO = "F"
+                   ADD 1 TO TOTAL-MULHERES
+               ELSE
+               PERFORM ERRO-GENERO
+               END-IF
+           END-IF.
+           
+       EXIBIR-RESUMO.
            DISPLAY "===================================".
            DISPLAY "Resumo: ".
            DISPLAY "Total de Homens:.. " TOTAL-HOMENS.
            DISPLAY "Total de Mulheres: " TOTAL-MULHERES.
            DISPLAY "===================================".
-
-           STOP RUN.
+       
+       ERRO-GENERO.
+           DISPLAY "O Genero Não Informado".
