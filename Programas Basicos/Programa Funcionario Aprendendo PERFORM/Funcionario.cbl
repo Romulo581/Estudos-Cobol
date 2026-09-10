@@ -75,7 +75,12 @@
            END-PERFORM.
       *Fechando o Arquivo
            CLOSE FUNCIONARIOS.
+<<<<<<< HEAD
            
+           STOP RUN.
+
+=======
+
       * Exibir o resumo
            DISPLAY "===================================".
            DISPLAY "Resumo: ".
