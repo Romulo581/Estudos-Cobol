@@ -39,7 +39,7 @@
            88 FIN-B-02 VALUE                   HIGH-VALUES.
            05 MATRICULA-ALUNO-B02              PIC 9(006).
            05 NOME-ALUNO-B02.
-               10 PRIMEIRO-NOME-B02             PIC X(020).
+               10 PRIMEIRO-NOME-B02            PIC X(020).
                10 SEGUNDO-NOME-B02             PIC X(020).
            05  GENERO-B02                      PIC A(001).
            05  NOTA-B-02.
@@ -81,5 +81,40 @@
            05 NOTA-B-05.
                10 NOTA-INTEIRA-B05             PIC 9(002).
                10 NOTA-DECIMAL-B05             PIC 9(002).
+
        WORKING-STORAGE.
+       01  NOTA-FORM-B-01.
+           05  WS-NOTA-B-01.
+               10 WS-NOTA-INTEIRA-B01              PIC 9(002) VALUE 0.   
+               FILLER                              PIC A(001) VALUE ",".
+               10 WS-NOTA-DECIMAL-B01              PIC 9(002) VALUE 0.
+
+       01  NOTA-FORM-B-02.
+           05  WS-NOTA-B-02.
+               10 WS-NOTA-INTEIRA-B02              PIC 9(002) VALUE 0.   
+               FILLER                              PIC A(001) VALUE ",".
+               10 WS-NOTA-DECIMAL-B02              PIC 9(002) VALUE 0.       
+
+       01  NOTA-FORM-B-03.
+           05  WS-NOTA-B-03.
+               10 WS-NOTA-INTEIRA-B03              PIC 9(002) VALUE 0.   
+               FILLER                              PIC A(001) VALUE ",".
+               10 WS-NOTA-DECIMAL-B03              PIC 9(002) VALUE 0. 
+
+       01  NOTA-FORM-B-04.
+           05  WS-NOTA-B-04.
+               10 WS-NOTA-INTEIRA-B04              PIC 9(002) VALUE 0.          
+               FILLER                              PIC A(001) VALUE ",".
+               10 WS-NOTA-DECIMAL-B04              PIC 9(002) VALUE 0.
        
+       01  NOTA-FORM-B-05.
+           05  WS-NOTA-B-05.
+               10 WS-NOTA-INTEIRA-B05              PIC 9(002) VALUE 0.           
+               FILLER                              PIC A(001) VALUE ",".
+               10 WS-NOTA-DECIMAL-B05              PIC 9(002) VALUE 0.
+
+       01  LEITURA-B01-FINALIZADA                  PIC X VALUE "N".
+       01  LEITURA-B02-FINALIZADA                  PIC X VALUE "N".
+       01  LEITURA-B03-FINALIZADA                  PIC X VALUE "N".
+       01  LEITURA-B04-FINALIZADA                  PIC X VALUE "N".
+       01  LEITURA-B05-FINALIZADA                  PIC X VALUE "N".
