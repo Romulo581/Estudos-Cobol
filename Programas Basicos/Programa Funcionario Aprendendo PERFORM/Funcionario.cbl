@@ -75,11 +75,7 @@
            END-PERFORM.
       *Fechando o Arquivo
            CLOSE FUNCIONARIOS.
-<<<<<<< HEAD
-           
-           STOP RUN.
 
-=======
 
       * Exibir o resumo
            DISPLAY "===================================".
@@ -89,5 +85,3 @@
            DISPLAY "===================================".
 
            STOP RUN.
-           
->>>>>>> 089712db28a70b4a0c7394591dbe2922fae009b5
