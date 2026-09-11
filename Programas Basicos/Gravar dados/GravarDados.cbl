@@ -1,6 +1,6 @@
        IDENTIFICATION DIVISION.
-           PROGRAM-ID. GravarDados.
-           AUTHOR. ROMULO CESAR.
+       PROGRAM-ID. GravarDados.
+       AUTHOR. ROMULO CESAR.
 
        ENVIRONMENT DIVISION.
        INPUT-OUTPUT SECTION.
@@ -131,7 +131,7 @@
       *    Variavel do calculo da media
        01  WS-CAL-MED.
            05 WS-MED-INTEIRO                       PIC 9(002) VALUE 0.
-           FILLER                                  PIC 9(001) VALUE ",".
+           FILLER                                  PIC X(001) VALUE ",".
            05 WS-MED-DECIMAL                       PIC 9(002) VALUE 0.
 
       *    Variaveis para confirmar a validação  
@@ -157,6 +157,7 @@
                       NOTA-TERCEIRO-B
                       NOTA-QUARTO-B
                       NOTA-QUINTO-B.
+
            PERFORM ARQ-PROCESSA.   
            CLOSE INPUT NOTA-PRIMEIRO-B
                       NOTA-SEGUNDO-B
@@ -175,7 +176,27 @@
        DISPLAY "=====================================================".
       
       *    Processamento do Arquivo  
+       ARQ-PROCESSA
+           PERFORM LER-TODOS-ARQUIVOS.
+
+           PERFORM UNTIL LEITURA-B01-FINALIZADA = "S" 
+                     AND LEITURA-B02-FINALIZADA = "S"
+                     AND LEITURA-B03-FINALIZADA = "S"
+                     AND LEITURA-B04-FINALIZADA = "S"
+                     AND LEITURA-B05-FINALIZADA = "S"
+
+           PERFORM VALID-ARQ
+               IF WS-NOME-IGUAL = "S" AND WS-MATRI-IGUAL = "S"
+                  PERFORM NOM-IMP
+                  PERFORM MAT-IMP
+                  PERFORM MED-IMP
+                  DISPLAY "-------------------------------------------"
+               END-IF
+
+               PERFORM LER-TODOS-ARQUIVOS
+           END-PERFORM.
        
+           
       *    Validando leitura dos arquivos 
        VALID-LEITURA.
            IF LEITURA-B01-FINALIZADA       EQUAL "S"
@@ -189,95 +210,104 @@
                PERFORM ERRO-LEIT-ARQS
            END-IF.
 
-      *    Montando variaveis dos arquivo do Bimestre01 
-       LER-REG-B01.
-           READ NOTA-PRIMEIRO-B INTO DET-B-01
-               AT END
-                   MOVE "S" TO LEITURA-B01-FINALIZADA
-               NOT AT END
-                   MOVE NOTA-INTEIRA-B01       TO WS-NIT-B01
-                   MOVE NOTA-DECIMAL-B01       TO WS-NDC-B01
-                   MOVE NOME-ALUNO-B01         TO WS-NA-B01
-                   MOVE MATRICULA-ALUNO-B01    TO WS-MT-B01
-                   CONTINUE
-           END-READ.
 
-      *    Montando variaveis dos arquivo do Bimestre02 
-       LER-REG-B02.
-           READ NOTA-SEGUNDO-B INTO DET-B-02
-               AT END
-                   MOVE "S" TO LEITURA-B02-FINALIZADA
-               NOT AT END
-                   MOVE NOTA-INTEIRA-B02       TO WS-NIT-B02
-                   MOVE NOTA-DECIMAL-B02       TO WS-NDC-B02
-                   MOVE NOME-ALUNO-B02         TO WS-NA-B02
-                   MOVE MATRICULA-ALUNO-B02    TO WS-MT-B02
-                   CONTINUE
-           END-READ.
+       LER-TODOS-ARQUIVOS.
+           IF LEITURA-B01-FINALIZADA NOT "S"
+               READ NOTA-PRIMEIRO-B INTO DET-B-01
+                   AT END
+                       MOVE "S" TO LEITURA-B01-FINALIZADA
+                       MOVE SPACES TO WS-NA-B01
+                       MOVE ZEROS  TO WS-MT-B01 WS-NIT-B01 WS-NDC-B01
+                   NOT AT END
+                       MOVE NOTA-INTEIRA-B01       TO WS-NIT-B01
+                       MOVE NOTA-DECIMAL-B01       TO WS-NDC-B01
+                       MOVE NOME-ALUNO-B01         TO WS-NA-B01
+                       MOVE MATRICULA-ALUNO-B01    TO WS-MT-B01
+                       CONTINUE
+               END-READ
+           END-IF
 
-      *    Montando variaveis dos arquivo do Bimestre03 
-       LER-REG-B03.
-           READ NOTA-TERCEIRO-B INTO DET-B-03
-               AT END
-                   MOVE "S" TO LEITURA-B03-FINALIZADA
-               NOT AT END
-                   MOVE NOTA-INTEIRA-B03       TO WS-NIT-B03
-                   MOVE NOTA-DECIMAL-B03       TO WS-NDC-B03
-                   MOVE NOME-ALUNO-B03         TO WS-NA-B03
-                   MOVE MATRICULA-ALUNO-B03    TO WS-MT-B03
-                   CONTINUE
-           END-READ.
+           IF LEITURA-B02-FINALIZADA NOT "S"
+               READ NOTA-SEGUNDO-B INTO DET-B-02
+                   AT END
+                       MOVE "S" TO LEITURA-B02-FINALIZADA
+                       MOVE SPACES TO WS-NA-B02
+                       MOVE ZEROS  TO WS-MT-B02 WS-NIT-B02 WS-NDC-B02
+                   NOT AT END
+                       MOVE NOTA-INTEIRA-B02       TO WS-NIT-B02
+                       MOVE NOTA-DECIMAL-B02       TO WS-NDC-B02
+                       MOVE NOME-ALUNO-B02         TO WS-NA-B02
+                       MOVE MATRICULA-ALUNO-B02    TO WS-MT-B02
+                       CONTINUE
+               END-READ
+           END-IF   
+           IF LEITURA-B03-FINALIZADA NOT "S"
+               READ NOTA-TERCEIRO-B INTO DET-B-03
+                       MOVE SPACES TO WS-NA-B03
+                       MOVE ZEROS  TO WS-MT-B03 WS-NIT-B03 WS-NDC-B03
+                   AT END
+                       MOVE "S" TO LEITURA-B03-FINALIZADA
+                   NOT AT END
+                       MOVE NOTA-INTEIRA-B03       TO WS-NIT-B03
+                       MOVE NOTA-DECIMAL-B03       TO WS-NDC-B03
+                       MOVE NOME-ALUNO-B03         TO WS-NA-B03
+                       MOVE MATRICULA-ALUNO-B03    TO WS-MT-B03
+                       CONTINUE
+               END-READ
+           END-IF
 
-      *    Montando variaveis dos arquivo do Bimestre04 
-       LER-REG-B04.
-           READ NOTA-QUARTO-B INTO DET-B-04
-               AT END
-                   MOVE "S" TO LEITURA-B04-FINALIZADA
-               NOT AT END
-                   MOVE NOTA-INTEIRA-B04       TO WS-NIT-B04
-                   MOVE NOTA-DECIMAL-B04       TO WS-NDC-B04
-                   MOVE NOME-ALUNO-B04         TO WS-NA-B04
-                   MOVE MATRICULA-ALUNO-B04    TO WS-MT-B04
-                   CONTINUE
-           END-READ.
+           IF LEITURA-B04-FINALIZADA NOT "S"
+               READ NOTA-QUARTO-B INTO DET-B-04
+                   AT END
+                       MOVE "S" TO LEITURA-B04-FINALIZADA
+                       MOVE SPACES TO WS-NA-B04
+                       MOVE ZEROS  TO WS-MT-B04 WS-NIT-B04 WS-NDC-B04
+                   NOT AT END
+                       MOVE NOTA-INTEIRA-B04       TO WS-NIT-B04
+                       MOVE NOTA-DECIMAL-B04       TO WS-NDC-B04
+                       MOVE NOME-ALUNO-B04         TO WS-NA-B04
+                       MOVE MATRICULA-ALUNO-B04    TO WS-MT-B04
+                       CONTINUE
+               END-READ
+           END-IF 
 
-      *    Montando variaveis dos arquivo do Bimestre04 
-       LER-REG-B05.
-           READ NOTA-QUINTO-B INTO DET-B-05
-               AT END
-                   MOVE "S" TO LEITURA-B05-FINALIZADA
-               NOT AT END
-                   MOVE NOTA-INTEIRA-B05       TO WS-NIT-B05
-                   MOVE NOTA-DECIMAL-B05       TO WS-NDC-B05
-                   MOVE NOME-ALUNO-B05         TO WS-NA-B05
-                   MOVE MATRICULA-ALUNO-B05    TO WS-MT-B05
-                   CONTINUE
-           END-READ.
-
+           IF LEITURA-B05-FINALIZADA NOT "S"
+               READ NOTA-QUINTO-B INTO DET-B-05
+                   AT END
+                       MOVE "S" TO LEITURA-B05-FINALIZADA
+                       MOVE SPACES TO WS-NA-B05
+                       MOVE ZEROS  TO WS-MT-B05 WS-NIT-B05 WS-NDC-B05
+                   NOT AT END
+                       MOVE NOTA-INTEIRA-B05       TO WS-NIT-B05
+                       MOVE NOTA-DECIMAL-B05       TO WS-NDC-B05
+                       MOVE NOME-ALUNO-B05         TO WS-NA-B05
+                       MOVE MATRICULA-ALUNO-B05   TO WS-MT-B05
+                       CONTINUE
+               END-READ
+           END-IF. 
 
       *    PERFORM para validar as Matriculas e nomes  
        VALID-ARQ.
       *    Validando nome 
-           IF  WS-NA-B01 = WS-NA-B02
-               AND WS-NA-B02 = WS-NA-B03
-               AND WS-NA-B03 = WS-NA-B04
-               AND WS-NA-B04 = WS-NA-B05
+           IF WS-NA-B01 = WS-NA-B02
+              AND WS-NA-B02 = WS-NA-B03
+              AND WS-NA-B03 = WS-NA-B04
+              AND WS-NA-B04 = WS-NA-B05
                MOVE "S" TO WS-NOME-IGUAL
-      *        Validando a matricula 
-               IF  WS-MT-B01 = WS-MT-B02
-                   AND WS-MT-B02 = WS-MT-B03
-                   AND WS-MT-B03 = WS-MT-B04
-                   AND WS-MT-B04 = WS-MT-B05
-                   MOVE "S" TO WS-MATRI-IGUAL
-
-               ELSE 
-                   MOVE "N" TO WS-MATRI-IGUAL
-                   PERFORM ERRO-MATRIC
-               END-IF
-
            ELSE
                MOVE "N" TO WS-NOME-IGUAL
                PERFORM ERRO-NOME
+           END-IF
+
+      *    Validando a matricula 
+           IF WS-MT-B01 = WS-MT-B02
+              AND WS-MT-B02 = WS-MT-B03
+              AND WS-MT-B03 = WS-MT-B04
+              AND WS-MT-B04 = WS-MT-B05
+               MOVE "S" TO WS-MATRI-IGUAL
+           ELSE 
+               MOVE "N" TO WS-MATRI-IGUAL
+               PERFORM ERRO-MATRIC
            END-IF.
 
        MAT-IMP.
@@ -301,11 +331,12 @@
        MED-IMP.
            IF WS-MATRI-IGUAL = "S"
               AND WS-NOME-IGUAL = "S"
-                   COMPUTE WS-CAL-MED = (NOTA-FORM-B-01 +
-                                         NOTA-FORM-B-02 +
-                                         NOTA-FORM-B-03 +
-                                         NOTA-FORM-B-04 +
-                                         NOTA-FORM-B-05) / 5
+                   COMPUTE WS-CAL-MED =( 
+                        (WS-NIT-B01 + (WS-NDC-B01 / 100)) +
+                        (WS-NIT-B02 + (WS-NDC-B02 / 100)) +
+                        (WS-NIT-B03 + (WS-NDC-B03 / 100)) +
+                        (WS-NIT-B04 + (WS-NDC-B04 / 100)) +
+                        (WS-NIT-B05 + (WS-NDC-B05 / 100)) ) / 5
                    DISPLAY "A média é: " WS-CAL-MED
            ELSE 
                PERFORM ERRO-NO-CALCULO-MED
