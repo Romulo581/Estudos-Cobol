@@ -82,7 +82,7 @@
                10 NOTA-INTEIRA-B05             PIC 9(002).
                10 NOTA-DECIMAL-B05             PIC 9(002).
 
-       WORKING-STORAGE.
+       WORKING-STORAGE SECTION.
       *    Formatação para as notas dos arquivos 
        01  NOTA-FORM-B-01.
            05  WS-NOTA-B-01.
