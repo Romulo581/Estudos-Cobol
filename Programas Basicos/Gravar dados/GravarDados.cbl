@@ -86,31 +86,31 @@
       *    Formatação para as notas dos arquivos 
        01  NOTA-FORM-B-01.
            05  WS-NOTA-B-01.
-               10 WS-NIT-B01                       PIC 9(002) VALUE 0.   
+               10 WS-NIT-B01                       PIC 9(002) VALUE 0.
                FILLER                              PIC A(001) VALUE ",".
                10 WS-NDC-B01                       PIC 9(002) VALUE 0.
 
        01  NOTA-FORM-B-02.
            05  WS-NOTA-B-02.
-               10 WS-NIT-B02                       PIC 9(002) VALUE 0.   
+               10 WS-NIT-B02                       PIC 9(002) VALUE 0.
                FILLER                              PIC A(001) VALUE ",".
-               10 WS-NDC-B02                       PIC 9(002) VALUE 0.       
+               10 WS-NDC-B02                       PIC 9(002) VALUE 0.
 
        01  NOTA-FORM-B-03.
            05  WS-NOTA-B-03.
-               10 WS-NIT-B03                       PIC 9(002) VALUE 0.   
+               10 WS-NIT-B03                       PIC 9(002) VALUE 0.
                FILLER                              PIC A(001) VALUE ",".
                10 WS-NDC-B03                       PIC 9(002) VALUE 0. 
 
        01  NOTA-FORM-B-04.
            05  WS-NOTA-B-04.
-               10 WS-NIT-B04                       PIC 9(002) VALUE 0.          
+               10 WS-NIT-B04                       PIC 9(002) VALUE 0.
                FILLER                              PIC A(001) VALUE ",".
                10 WS-NDC-B04                       PIC 9(002) VALUE 0.
        
        01  NOTA-FORM-B-05.
            05  WS-NOTA-B-05.
-               10 WS-NIT-B05                       PIC 9(002) VALUE 0.           
+               10 WS-NIT-B05                       PIC 9(002) VALUE 0.
                FILLER                              PIC A(001) VALUE ",".
                10 WS-NDC-B05                       PIC 9(002) VALUE 0.
       
