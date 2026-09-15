@@ -3,143 +3,154 @@
        AUTHOR. ROMULO CESAR.
 
        ENVIRONMENT DIVISION.
+       
        INPUT-OUTPUT SECTION.
-       FILE-CONTROL 
-           SELECT NOTA-PRIMEIRO-B ASSIGN TO    "NotasBimestre1"
-               ORGANIZATION IS LINE SEQUENTIAL.
+       FILE-CONTROL. 
+          SELECT NOTA-PRIMEIRO-B 
+               ASSIGN TO "NotasBimestre1"
+              ORGANIZATION IS LINE SEQUENTIAL.
            
-           SELECT NOTA-SEGUNDO-B ASSIGN TO     "NotasBimestre2"
-               ORGANIZATION IS LINE SEQUENTIAL.
+          SELECT NOTA-SEGUNDO-B 
+               ASSIGN TO"NotasBimestre2"
+              ORGANIZATION IS LINE SEQUENTIAL.
 
-           SELECT NOTA-TERCEIRO-B ASSIGN TO    "NotasBimestre3"
-               ORGANIZATION IS LINE SEQUENTIAL.
+          SELECT NOTA-TERCEIRO-B 
+               ASSIGN TO "NotasBimestre3"
+              ORGANIZATION IS LINE SEQUENTIAL.
 
-           SELECT NOTA-QUARTO-B ASSIGN TO      "NotasBimestre4"
-               ORGANIZATION IS LINE SEQUENTIAL.
+          SELECT NOTA-QUINTO-B 
+          ASSIGN TO "NotasBimestre5"
+              ORGANIZATION IS LINE SEQUENTIAL.
 
-           SELECT NOTA-QUINTO-B ASSIGN TO      "NotasBimestre5"
-               ORGANIZATION IS LINE SEQUENTIAL.
+          SELECT NOTA-QUARTO-B 
+               ASSIGN TO "NotasBimestre4"
+              ORGANIZATION IS LINE SEQUENTIAL.
 
        DATA DIVISION.
        FILE SECTION.
+       
        FD  NOTA-PRIMEIRO-B.
        01  DET-B-01.
-           88 FIN-B-01  VALUE                  HIGH-VALUES.
-           05 MATRICULA-ALUNO-B01              PIC 9(006).
-           05 NOME-ALUNO-B01.
-               10  PRIMEIRO-NOME-B01           PIC X(020).
-               10  SEGUNDO-NOME-B01            PIC X(020).
-           05  GENERO-B01                      PIC A(001).
-           05  NOTA-B-01.
-               10  NOTA-INTEIRA-B01            PIC 9(002).
-               10  NOTA-DECIMAL-B01            PIC 9(002).
+          88 FIN-B-01  VALUE                  HIGH-VALUES.
+          05 MATRICULA-ALUNO-B01              PIC 9(006).
+           
+          05 NOME-ALUNO-B01.
+              10  PRIMEIRO-NOME-B01           PIC X(020).
+              10  SEGUNDO-NOME-B01            PIC X(020).
+          05  GENERO-B01                      PIC A(001).
+           
+          05  NOTA-B-01.
+              10  NOTA-INTEIRA-B01            PIC 9(002).
+              10  NOTA-DECIMAL-B01            PIC 9(002).
 
        FD  NOTA-SEGUNDO-B.
        01  DET-B-02.
-           88 FIN-B-02 VALUE                   HIGH-VALUES.
-           05 MATRICULA-ALUNO-B02              PIC 9(006).
-           05 NOME-ALUNO-B02.
-               10 PRIMEIRO-NOME-B02            PIC X(020).
-               10 SEGUNDO-NOME-B02             PIC X(020).
-           05  GENERO-B02                      PIC A(001).
-           05  NOTA-B-02.
-               10 NOTA-INTEIRA-B02             PIC 9(002).
-               10 NOTA-DECIMAL-B02             PIC 9(002).
+          88 FIN-B-02 VALUE                   HIGH-VALUES.
+          05 MATRICULA-ALUNO-B02              PIC 9(006).
+          
+          05 NOME-ALUNO-B02.
+              10 PRIMEIRO-NOME-B02            PIC X(020).
+              10 SEGUNDO-NOME-B02             PIC X(020).
+          05  GENERO-B02                      PIC A(001).
+          
+          05  NOTA-B-02.
+              10 NOTA-INTEIRA-B02             PIC 9(002).
+              10 NOTA-DECIMAL-B02             PIC 9(002).
 
        FD  NOTA-TERCEIRO-B.
        01  DET-B-03.
-           88 FIN-B-03 VALUE                   HIGH-VALUES.
-           05 MATRICULA-ALUNO-B03              PIC 9(006).
-           05 NOME-ALUNO-B03.
-               10 PRIMEIRO-NOME-B03            PIC X(020).
-               10 SEGUNDO-NOME-B03             PIC X(020).
-           05  GENERO-B03                      PIC A(001).
-           05 NOTA-B-03.
-               10 NOTA-INTEIRA-B03             PIC 9(002).
-               10 NOTA-DECIMAL-B03             PIC 9(002).
+          88 FIN-B-03 VALUE                   HIGH-VALUES.
+          05 MATRICULA-ALUNO-B03              PIC 9(006).
+           
+          05 NOME-ALUNO-B03.
+              10 PRIMEIRO-NOME-B03            PIC X(020).
+              10 SEGUNDO-NOME-B03             PIC X(020).
+          05  GENERO-B03                      PIC A(001).
+           
+          05 NOTA-B-03.
+              10 NOTA-INTEIRA-B03             PIC 9(002).
+              10 NOTA-DECIMAL-B03             PIC 9(002).
 
        FD  NOTA-QUARTO-B.
        01  DET-B-04.
-           88 FIN-B-04 VALUE                   HIGH-VALUES.
-           05  MATRICULA-ALUNO-B04             PIC 9(006).
-           05  NOME-ALUNO-B04.
-               10 PRIMEIRO-NOME-B04            PIC X(020).
-               10 SEGUNDO-NOME-B04             PIC X(020).
-           05 GENERO-B04                       PIC A(001).
-           05 NOTA-B-04.
-               10 NOTA-INTEIRA-B04             PIC 9(002).
-               10 NOTA-DECIMAL-B04             PIC 9(002).
+          88 FIN-B-04 VALUE                   HIGH-VALUES.
+          05  MATRICULA-ALUNO-B04             PIC 9(006).
+          
+          05  NOME-ALUNO-B04.
+              10 PRIMEIRO-NOME-B04            PIC X(020).
+              10 SEGUNDO-NOME-B04             PIC X(020).
+          05 GENERO-B04                       PIC A(001).
+           
+          05 NOTA-B-04.
+              10 NOTA-INTEIRA-B04             PIC 9(002).
+              10 NOTA-DECIMAL-B04             PIC 9(002).
 
        FD  NOTA-QUINTO-B.
        01  DET-B-05.
-           88 FIN-B-05 VALUE                   HIGH-VALUES.
-           05 MATRICULA-ALUNO-B05              PIC 9(006).
-           05 NOME-ALUNO-B05.
-               10 PRIMEIRO-NOME-B05            PIC X(020).
-               10 SEGUNDO-NOME-B05             PIC X(020).
-           05 GENERO-B05                       PIC A(001).
-           05 NOTA-B-05.
-               10 NOTA-INTEIRA-B05             PIC 9(002).
-               10 NOTA-DECIMAL-B05             PIC 9(002).
+          88 FIN-B-05 VALUE                   HIGH-VALUES.
+          05 MATRICULA-ALUNO-B05              PIC 9(006).
+           
+          05 NOME-ALUNO-B05.
+              10 PRIMEIRO-NOME-B05            PIC X(020).
+              10 SEGUNDO-NOME-B05             PIC X(020).
+          05 GENERO-B05                       PIC A(001).
+          
+          05 NOTA-B-05.
+              10 NOTA-INTEIRA-B05             PIC 9(002).
+              10 NOTA-DECIMAL-B05             PIC 9(002).
 
        WORKING-STORAGE SECTION.
-      *    Formatação para as notas dos arquivos 
+      *   Formatação para as notas dos arquivos 
        01  NOTA-FORM-B-01.
-           05  WS-NOTA-B-01.
-               10 WS-NIT-B01                       PIC 9(002) VALUE 0.
-               FILLER                              PIC A(001) VALUE ",".
-               10 WS-NDC-B01                       PIC 9(002) VALUE 0.
+          05  WS-NOTA-B-01.
+              10 WS-NIT-B01                       PIC 9(002) VALUE 0.
+              10 WS-NDC-B01                       PIC 9(002) VALUE 0.
 
        01  NOTA-FORM-B-02.
-           05  WS-NOTA-B-02.
-               10 WS-NIT-B02                       PIC 9(002) VALUE 0.
-               FILLER                              PIC A(001) VALUE ",".
-               10 WS-NDC-B02                       PIC 9(002) VALUE 0.
+          05  WS-NOTA-B-02.
+              10 WS-NIT-B02                       PIC 9(002) VALUE 0.
+              10 WS-NDC-B02                       PIC 9(002) VALUE 0.
 
        01  NOTA-FORM-B-03.
-           05  WS-NOTA-B-03.
-               10 WS-NIT-B03                       PIC 9(002) VALUE 0.
-               FILLER                              PIC A(001) VALUE ",".
-               10 WS-NDC-B03                       PIC 9(002) VALUE 0. 
+          05  WS-NOTA-B-03.
+              10 WS-NIT-B03                       PIC 9(002) VALUE 0.
+              10 WS-NDC-B03                       PIC 9(002) VALUE 0. 
 
        01  NOTA-FORM-B-04.
-           05  WS-NOTA-B-04.
-               10 WS-NIT-B04                       PIC 9(002) VALUE 0.
-               FILLER                              PIC A(001) VALUE ",".
-               10 WS-NDC-B04                       PIC 9(002) VALUE 0.
+          05  WS-NOTA-B-04.
+              10 WS-NIT-B04                       PIC 9(002) VALUE 0.
+              10 WS-NDC-B04                       PIC 9(002) VALUE 0.
        
        01  NOTA-FORM-B-05.
-           05  WS-NOTA-B-05.
-               10 WS-NIT-B05                       PIC 9(002) VALUE 0.
-               FILLER                              PIC A(001) VALUE ",".
-               10 WS-NDC-B05                       PIC 9(002) VALUE 0.
+          05  WS-NOTA-B-05.
+              10 WS-NIT-B05                       PIC 9(002) VALUE 0.
+              10 WS-NDC-B05                       PIC 9(002) VALUE 0.
       
       *    Variavel para validar o nome dos arquivos 
-       01  WS-NA-B01.                              PIC X(020) VALUE " ".
-       01  WS-NA-B02.                              PIC X(020) VALUE " ".
-       01  WS-NA-B03.                              PIC X(020) VALUE " ".
-       01  WS-NA-B04.                              PIC X(020) VALUE " ".
-       01  WS-NA-B05.                              PIC X(020) VALUE " ".
+       01  WS-NA-B01                       PIC X(040) VALUE SPACES.
+       01  WS-NA-B02                       PIC X(040) VALUE SPACES.
+       01  WS-NA-B03                       PIC X(040) VALUE SPACES.
+       01  WS-NA-B04                       PIC X(040) VALUE SPACES.
+       01  WS-NA-B05                       PIC X(040) VALUE SPACES.
        
       *    Variaveis para validar a matricula dos arquivos 
-       01  WS-MT-B01.                              PIC 9(006) VALUE 0.
-       01  WS-MT-B02.                              PIC 9(006) VALUE 0.
-       01  WS-MT-B03.                              PIC 9(006) VALUE 0.
-       01  WS-MT-B04.                              PIC 9(006) VALUE 0.
-       01  WS-MT-B05.                              PIC 9(006) VALUE 0.
-      
+       01  WS-MT-B01                               PIC 9(006) VALUE 0.
+       01  WS-MT-B02                               PIC 9(006) VALUE 0.
+       01  WS-MT-B03                               PIC 9(006) VALUE 0.
+       01  WS-MT-B04                               PIC 9(006) VALUE 0.
+       01  WS-MT-B05                               PIC 9(006) VALUE 0.
+         
       *    Variavel do calculo da media
        01  WS-CAL-MED.
-           05 WS-MED-INTEIRO                       PIC 9(002) VALUE 0.
-           FILLER                                  PIC X(001) VALUE ",".
-           05 WS-MED-DECIMAL                       PIC 9(002) VALUE 0.
-
+          05 WS-MED-INTEIRO                       PIC 9(002) VALUE 0.
+          05 WS-MED-DECIMAL                       PIC 9(002) VALUE 0.
+       01 WS-CAL-NOV                              PIC 9(002)V99.
       *    Variaveis para confirmar a validação  
-       01  WS-NOME-IGUAL                           PIC X(001) VALUE "N".
-       01  WS-MATRI-IGUAL                          PIC X(001) VALUE "N".
-      
+       01  WS-NOME-IGUAL                       PIC X(001) VALUE "N".
+       01  WS-MATRI-IGUAL                      PIC X(001) VALUE "N".
+         
       *    Validando leitura dos arquivos
-       01  WS-LEITURA-VALIDA                       PIC X(001) VALUE "N".
+       01  WS-LEITURA-VALIDA                   PIC X(001) VALUE "N".
 
       *    Variaveis para finalizar a leitura do arquivo 
        01  LEITURA-B01-FINALIZADA                  PIC X VALUE "N".
@@ -159,11 +170,11 @@
                       NOTA-QUINTO-B.
 
            PERFORM ARQ-PROCESSA.   
-           CLOSE INPUT NOTA-PRIMEIRO-B
-                      NOTA-SEGUNDO-B
-                      NOTA-TERCEIRO-B
-                      NOTA-QUARTO-B
-                      NOTA-QUINTO-B.
+           CLOSE NOTA-PRIMEIRO-B
+                        NOTA-SEGUNDO-B
+                        NOTA-TERCEIRO-B
+                        NOTA-QUARTO-B
+                        NOTA-QUINTO-B.
 
 
            PERFORM EXIBIR-RESUMO.
@@ -171,12 +182,12 @@
        STOP RUN.
        
        HEADER.
-       DISPLAY "=====================================================".
-       DISPLAY "|_________ Media escolar Anual dos alunos __________|".
-       DISPLAY "=====================================================".
+       DISPLAY "====================================================".
+       DISPLAY "|_________ Media escolar Anual dos alunos _________|".
+       DISPLAY "====================================================".
       
       *    Processamento do Arquivo  
-       ARQ-PROCESSA
+       ARQ-PROCESSA.
            PERFORM LER-TODOS-ARQUIVOS.
 
            PERFORM UNTIL LEITURA-B01-FINALIZADA = "S" 
@@ -190,14 +201,14 @@
                   PERFORM NOM-IMP
                   PERFORM MAT-IMP
                   PERFORM MED-IMP
-                  DISPLAY "-------------------------------------------"
+                  DISPLAY "------------------------------------------"
                END-IF
 
                PERFORM LER-TODOS-ARQUIVOS
            END-PERFORM.
        
            
-      *    Validando leitura dos arquivos 
+      *    Validando leitura dos arquivos
        VALID-LEITURA.
            IF LEITURA-B01-FINALIZADA       EQUAL "S"
               AND LEITURA-B02-FINALIZADA   EQUAL "S"
@@ -212,7 +223,7 @@
 
 
        LER-TODOS-ARQUIVOS.
-           IF LEITURA-B01-FINALIZADA NOT "S"
+           IF LEITURA-B01-FINALIZADA NOT = "S"
                READ NOTA-PRIMEIRO-B INTO DET-B-01
                    AT END
                        MOVE "S" TO LEITURA-B01-FINALIZADA
@@ -227,7 +238,7 @@
                END-READ
            END-IF
 
-           IF LEITURA-B02-FINALIZADA NOT "S"
+           IF LEITURA-B02-FINALIZADA NOT = "S"
                READ NOTA-SEGUNDO-B INTO DET-B-02
                    AT END
                        MOVE "S" TO LEITURA-B02-FINALIZADA
@@ -241,12 +252,13 @@
                        CONTINUE
                END-READ
            END-IF   
-           IF LEITURA-B03-FINALIZADA NOT "S"
+           IF LEITURA-B03-FINALIZADA NOT = "S"
                READ NOTA-TERCEIRO-B INTO DET-B-03
+                   AT END
                        MOVE SPACES TO WS-NA-B03
                        MOVE ZEROS  TO WS-MT-B03 WS-NIT-B03 WS-NDC-B03
-                   AT END
                        MOVE "S" TO LEITURA-B03-FINALIZADA
+                       
                    NOT AT END
                        MOVE NOTA-INTEIRA-B03       TO WS-NIT-B03
                        MOVE NOTA-DECIMAL-B03       TO WS-NDC-B03
@@ -256,7 +268,7 @@
                END-READ
            END-IF
 
-           IF LEITURA-B04-FINALIZADA NOT "S"
+           IF LEITURA-B04-FINALIZADA NOT = "S"
                READ NOTA-QUARTO-B INTO DET-B-04
                    AT END
                        MOVE "S" TO LEITURA-B04-FINALIZADA
@@ -271,7 +283,7 @@
                END-READ
            END-IF 
 
-           IF LEITURA-B05-FINALIZADA NOT "S"
+           IF LEITURA-B05-FINALIZADA NOT = "S"
                READ NOTA-QUINTO-B INTO DET-B-05
                    AT END
                        MOVE "S" TO LEITURA-B05-FINALIZADA
@@ -329,20 +341,21 @@
            END-IF.
        
        MED-IMP.
+           MOVE WS-CAL-MED TO WS-CAL-NOV    
            IF WS-MATRI-IGUAL = "S"
               AND WS-NOME-IGUAL = "S"
-                   COMPUTE WS-CAL-MED =( 
+                   COMPUTE WS-CAL-NOV =( 
                         (WS-NIT-B01 + (WS-NDC-B01 / 100)) +
                         (WS-NIT-B02 + (WS-NDC-B02 / 100)) +
                         (WS-NIT-B03 + (WS-NDC-B03 / 100)) +
                         (WS-NIT-B04 + (WS-NDC-B04 / 100)) +
                         (WS-NIT-B05 + (WS-NDC-B05 / 100)) ) / 5
-                   DISPLAY "A média é: " WS-CAL-MED
+                   DISPLAY "A média é: " WS-CAL-NOV
            ELSE 
                PERFORM ERRO-NO-CALCULO-MED
            END-IF.
 
-       EXIBIR-RESUMO.
+        EXIBIR-RESUMO.
            IF WS-LEITURA-VALIDA EQUAL "S"
               PERFORM NOM-IMP
               PERFORM MED-IMP
@@ -352,52 +365,52 @@
            END-IF.
            
       *    Campo de mensagem de erro 
-       ERRO-LEITURA-B01.
+        ERRO-LEITURA-B01.
            DISPLAY "=============================================".
            DISPLAY "| Erro na leitura do Arquivo NotasBimestre1 |".
            DISPLAY "=============================================".
        
-       ERRO-LEITURA-B02.
+        ERRO-LEITURA-B02.
            DISPLAY "=============================================".
            DISPLAY "| Erro na leitura do Arquivo NotasBimestre2 |".
            DISPLAY "=============================================".
 
-       ERRO-LEITURA-B03.
+        ERRO-LEITURA-B03.
            DISPLAY "=============================================".
            DISPLAY "| Erro na leitura do Arquivo NotasBimestre3 |".
            DISPLAY "=============================================".
 
-       ERRO-LEITURA-B04.
+        ERRO-LEITURA-B04.
            DISPLAY "=============================================".
            DISPLAY "| Erro na leitura do Arquivo NotasBimestre4 |".
            DISPLAY "=============================================".
 
-       ERRO-LEITURA-B05.
+        ERRO-LEITURA-B05.
            DISPLAY "=============================================".
            DISPLAY "| Erro na leitura do Arquivo NotasBimestre5 |".
            DISPLAY "=============================================".
 
-       ERRO-LEIT-ARQS.
+        ERRO-LEIT-ARQS.
            DISPLAY "=============================================".
            DISPLAY "|     Erro na leitura de algum Arquivo      |".
            DISPLAY "=============================================".
 
-       ERRO-IMP-NOM.
+        ERRO-IMP-NOM.
            DISPLAY "=============================================".
            DISPLAY "|     Erro ao imprimir o nome do aluno      |".
            DISPLAY "=============================================".
       
-       ERRO-MATRIC.
+        ERRO-MATRIC.
            DISPLAY "=============================================".
            DISPLAY "| A matricula é divergente de outro arquivo |".
            DISPLAY "=============================================".
 
-       ERRO-NOME.
+        ERRO-NOME.
            DISPLAY "=============================================".
            DISPLAY "|    O Nome é divergente de outro arquivo   |".
            DISPLAY "=============================================".
        
-       ERRO-NO-CALCULO-MED.
+        ERRO-NO-CALCULO-MED.
            DISPLAY "=============================================".
            DISPLAY "| Erro no calculo ou no processo de leitura |".
            DISPLAY "=============================================".
