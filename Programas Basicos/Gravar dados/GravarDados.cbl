@@ -201,7 +201,7 @@
                         PERFORM MED-IMP
                         
                   DISPLAY "Matricula: " WS-MT-B01 " Aluno: "
-                             WS-NA-B01 "A média é: " 
+                             FUNCTION TRIM(WS-NA-B01) "A média é: " 
                              WS-CAL-NOV
                   DISPLAY "------------------------------------------"
                END-IF
