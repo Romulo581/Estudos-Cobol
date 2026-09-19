@@ -178,16 +178,16 @@
                         NOTA-QUINTO-B.
 
 
-        STOP RUN.
+           STOP RUN.
        
-        HEADER.
-        DISPLAY "====================================================".
-        DISPLAY "|_________ Media escolar Anual dos alunos _________|".
-        DISPLAY "====================================================".
-      
+          HEADER.
+           DISPLAY "==================================================".
+           DISPLAY "|_________ Media escolar Anual dos alunos _______|".
+           DISPLAY "==================================================".
+         
       *    Processamento do Arquivo  
         ARQ-PROCESSA.
-         PERFORM LER-TODOS-ARQUIVOS.
+           PERFORM LER-TODOS-ARQUIVOS.
 
            PERFORM UNTIL LEITURA-B01-FINALIZADA = "S" 
                      AND LEITURA-B02-FINALIZADA = "S"
@@ -201,7 +201,7 @@
                         PERFORM MED-IMP
                         
                   DISPLAY "Matricula: " WS-MT-B01 " Aluno: "
-                             FUNCTION TRIM(WS-NA-B01) "A média é: " 
+                             FUNCTION TRIM(WS-NA-B01) " A media e: " 
                              WS-CAL-NOV
                   DISPLAY "------------------------------------------"
                END-IF
